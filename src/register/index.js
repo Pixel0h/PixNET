@@ -32,7 +32,9 @@ function RegistrationModal(props) {
         username : "",
         email : "",
         password : "",
-        confirmPassword : ""
+        confirmPassword : "",
+        //err : false,
+        //errMsg : ""
     });
     const handleChange = (e) => {
         const { id, value } = e.target
@@ -49,7 +51,7 @@ function RegistrationModal(props) {
         }).then(function() {
             // Update Successful
         }).catch(function(error) {
-            // An error happened
+            // Error happened
         });
     }
     const handleSubmitClick = (e) => {
@@ -62,11 +64,9 @@ function RegistrationModal(props) {
                     props.onHide();
                 })
                 .catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
+                    //var errorMessage = error.message;
 
-                    alert(errorMessage);
-                    console.log(errorCode + " : " + errorMessage);
+                    //setState({ err: true, errMsg: errorMessage })
                 });
             } else {
                 alert('Passwords do not match');
@@ -87,7 +87,9 @@ function RegistrationModal(props) {
                         <Form.Row>
                             <Col xs="auto">
                                 <Form.Group controlId="username">
-                                    <TextField 
+                                    <TextField
+                                        //helperText={state.errMsg}
+                                        //error={state.err} 
                                         id="username"
                                         label="Username"
                                         variant="outlined"
