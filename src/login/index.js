@@ -4,14 +4,18 @@ import firebase from '../firebase';
 
 import { FiLogIn } from 'react-icons/fi';
 
-import Button from 'react-bootstrap/Button';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField'
+
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 
 export class Login extends Component {
     state = {
         email : "",
-        password : ""
+        password : "",
+        err : false,
+        errMsg : ""
     };
     handleChange = (e) => {
         const { id, value } = e.target
@@ -28,24 +32,32 @@ export class Login extends Component {
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then((user) => {
-            //Signed in
+            // User is signed in
         })
         .catch((error) => {
-            alert(error);
+            // Error
+            var errorMessage = error.message;
+
+            this.setState({ err: true, errMsg: errorMessage })
         });
     };
     render() {
         const { email, password } = this.state;
+        
         return (
             <>
                 <Form className="sign-in-form">
-                    <Form.Row className="align-items-center">
+                    <Form.Row>
                         <Col xs="auto">
                             <Form.Group controlId="email">
                                 <Form.Label srOnly>Email Address</Form.Label>
-                                <Form.Control 
-                                    autoFocus
+                                <TextField
+                                    helperText={this.state.errMsg}
+                                    error={this.state.err}
+                                    id="email"
+                                    label="Email"
                                     type="email"
+                                    variant="outlined"
                                     aria-describedby="emailHelp"
                                     placeholder="Enter email"
                                     value={email}
@@ -56,7 +68,10 @@ export class Login extends Component {
                         <Col xs="auto">
                             <Form.Group controlId="password">
                                 <Form.Label srOnly>Password</Form.Label>
-                                <Form.Control 
+                                <TextField
+                                    id="password"
+                                    label="Password"
+                                    variant="outlined" 
                                     type="password"
                                     placeholder="Enter password"
                                     value={password}
@@ -66,7 +81,7 @@ export class Login extends Component {
                         </Col>
                     </Form.Row>
                 </Form>
-                <Button className="btn-sign-in" type="submit" onClick={this.handleSubmit}><FiLogIn /> Login</Button>
+                <Button variant="contained" color="primary" className="login" type="submit" onClick={this.handleSubmit}><FiLogIn className="loginIcon" /> Login</Button>
             </>
         )
     }

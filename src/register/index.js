@@ -6,18 +6,18 @@ import 'firebase/auth';
 import { AiOutlineMail } from 'react-icons/ai';
 
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
+
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 export function Register() {
     const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <>
-            <button className="btn btn-register" onClick={() => setModalShow(true)}>
-                <AiOutlineMail /> Register with Email
-            </button>
+            <Button variant="outlined" color="secondary" className="register" onClick={() => setModalShow(true)}><AiOutlineMail className="registerIcon" /> Register with Email</Button>
 
             <RegistrationModal 
                 show={modalShow}
@@ -32,7 +32,9 @@ function RegistrationModal(props) {
         username : "",
         email : "",
         password : "",
-        confirmPassword : ""
+        confirmPassword : "",
+        //err : false,
+        //errMsg : ""
     });
     const handleChange = (e) => {
         const { id, value } = e.target
@@ -48,8 +50,8 @@ function RegistrationModal(props) {
             displayName: state.username
         }).then(function() {
             // Update Successful
-        }).catch (function(error) {
-            // An error happened
+        }).catch(function(error) {
+            // Error happened
         });
     }
     const handleSubmitClick = (e) => {
@@ -62,11 +64,9 @@ function RegistrationModal(props) {
                     props.onHide();
                 })
                 .catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
+                    //var errorMessage = error.message;
 
-                    alert(errorMessage);
-                    console.log(errorCode + " : " + errorMessage);
+                    //setState({ err: true, errMsg: errorMessage })
                 });
             } else {
                 alert('Passwords do not match');
@@ -75,7 +75,7 @@ function RegistrationModal(props) {
         return (
             <Modal
                 {...props}
-                size="lg"
+                size="sm"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
@@ -83,13 +83,16 @@ function RegistrationModal(props) {
                     <Modal.Title>Register</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="modalBody">
-                    <Form>
-                        <Form.Row className="align-items-center">
+                    <Form className="sign-in-form">
+                        <Form.Row>
                             <Col xs="auto">
                                 <Form.Group controlId="username">
-                                    <Form.Label srOnly>Username</Form.Label>
-                                    <Form.Control 
-                                        autoFocus
+                                    <TextField
+                                        //helperText={state.errMsg}
+                                        //error={state.err} 
+                                        id="username"
+                                        label="Username"
+                                        variant="outlined"
                                         type="text"
                                         placeholder="Enter username"
                                         value={state.username}
@@ -99,8 +102,10 @@ function RegistrationModal(props) {
                             </Col>
                             <Col xs="auto">
                                 <Form.Group controlId="email">
-                                    <Form.Label srOnly>Email Address</Form.Label>
-                                    <Form.Control 
+                                    <TextField 
+                                        id="email"
+                                        label="Email"
+                                        variant="outlined"
                                         type="email"
                                         aria-describedby="emailHelp"
                                         placeholder="Enter email"
@@ -111,8 +116,10 @@ function RegistrationModal(props) {
                             </Col>
                             <Col xs="auto">
                                 <Form.Group controlId="password">
-                                    <Form.Label srOnly>Password</Form.Label>
-                                    <Form.Control 
+                                    <TextField 
+                                        id="password"
+                                        label="Password"
+                                        variant="outlined"
                                         type="password"
                                         placeholder="Enter password"
                                         value={state.password}
@@ -122,8 +129,10 @@ function RegistrationModal(props) {
                             </Col>
                             <Col xs="auto">
                                 <Form.Group controlId="confirmPassword">
-                                    <Form.Label srOnly>Confirm Password</Form.Label>
-                                    <Form.Control 
+                                    <TextField
+                                        id="confirmPassword"
+                                        label="Confirm Password"
+                                        variant="outlined"
                                         type="password"
                                         placeholder="Confirm Password"
                                         value={state.confirmPassword}
@@ -135,8 +144,8 @@ function RegistrationModal(props) {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer className="modalFooter">
-                    <Button type="submit" onClick={handleSubmitClick}>Register</Button>
-                    <Button onClick={props.onHide}>Close</Button>
+                    <Button className="mr-2" variant="contained" color="primary" type="submit" onClick={handleSubmitClick}>Register</Button>
+                    <Button variant="outlined" color="primary" onClick={props.onHide}>Close</Button>
                 </Modal.Footer>
             </Modal>
         )

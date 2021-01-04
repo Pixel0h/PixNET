@@ -1,12 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
 :root {
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
     --text-primary: #b6b6b6;
     --text-secondary: #ececec;
-    --bg-primary: #23232e;
-    --bg-secondary: #141418;
+    --bg-primary: #2f2f3d;
+    --bg-secondary: #23232e;
     --border-primary: #343444;
     --transition-speed: 600ms;
 }
@@ -90,7 +88,7 @@ form.messageForm button:hover {
 form.sign-in-form {
     max-width: 200px;
     width: 100%;
-    margin: 0 auto;
+    align-self: center;
     margin-bottom: 10px;
     color: white;
 }
@@ -168,66 +166,75 @@ img.photoURL {
     margin-top: 10px;
 }
 
-.btn-sign-in-google {
-    background-color: #0051ff;
-    border: 1px solid #0051ff;
-    color: white;
-    max-width: 175px;
+.google-login {
+    max-width: 200px;
     width: 100%;
-    margin: 0 auto;
+    align-self: center;
 }
 
-.btn-sign-in-google:hover {
-    color: white;
-    background-color: #0f5bff;
-    border: 1px solid #0f5bff;
+.googleIcon {
+    font-size: 18px;
+    margin-right: 3px;
 }
 
-.btn-sign-in-google:focus {
-    color: white;
-    background-color: #0f5bff;
-    border: 1px solid #0f5bff;
-}
-
-.btn-register {
-    background-color: #0f7e78;
-    border: 1px solid #0f7e78;
-    color: white;
-    max-width: 175px;
+.register {
+    max-width: 200px;
     width: 100%;
-    margin: 0 auto;
-    margin-bottom: 10px;
+    bottom: 10px;
+    align-self: center;
 }
 
-.btn-register:hover {
-    color: white;
-    background-color: #1c918b;
-    border: 1px solid #1c918b;
+.registerIcon {
+    font-size: 18px;
+    margin-right: 3px;
 }
 
-.btn-register:focus {
-    color: white;
-    background-color: #1c918b;
-    border: 1px solid #1c918b;
-}
-
-.btn-sign-in {
-    max-width: 175px;
+.login {
+    max-width: 200px;
     width: 100%;
-    margin: 0 auto;
-    margin-bottom: 50px;
+    align-self: center;
+    bottom: 20px;
 }
 
-.btn-sign-out {
-    max-width: 175px;
-    width: 100%;
-    margin-left: auto;
+.loginIcon {
+    font-size: 18px;
+    margin-right: 3px;
 }
 
-.btn-change-username {
-    max-width: 175px;
+.logout {
+    max-width: 200px;
     width: 100%;
-    margin-left: auto;
+}
+
+.logoutIcon {
+    font-size: 18px;
+    margin-right: 3px;
+}
+
+.change-username {
+    max-width: 200px;
+    width: 100%;
+}
+
+.iconChangeUsername {
+    font-size: 18px;
+    margin-right: 3px;
+}
+
+.changeAvatar {
+    max-width: 200px;
+    width: 100%;
+}
+
+.iconChangeAvatar {
+    font-size: 18px;
+    margin-right: 3px;
+}
+
+.imagePrev {
+    max-width: 250px;
+    max-height: 250px;
+    border: 1px solid var(--text-secondary);
 }
 
 .pixelIcon {
@@ -273,21 +280,15 @@ img.photoURL {
     border-bottom: 1px solid var(--border-primary);
 }  
 
-.form-control {
-    background-color: var(--bg-primary);
-    color: white;
-    border: 1px solid var(--border-primary);
+.MuiFormLabel-root {
+    color: var(--text-primary) !important;
 }
 
-.form-control:focus {
-    color: white;
-    background-color: var(--bg-secondary);
-    border-color: #86b7fe;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+.MuiOutlinedInput-input {
+    color: var(--text-primary) !important;
 }
 
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 670px) {
     .disclaimer {
         text-align: center;
         font-size: 14px;
@@ -300,20 +301,25 @@ img.photoURL {
         padding-left: 10px;
         padding-right: 10px;
     }
-    .btn-sign-out {
-        font-size: 0;
+    .logout {
         width: 100px;
         height: 45px;
     }
-    button.btn-change-username {
-        font-size: 0;
+    .change-username {
         max-width: 100px;
         height: 45px;
     }
-    .signOutIcon {
-        font-size: initial;
+    .changeAvatar {
+        max-width: 100px;
+        height: 45px;
+    }
+    .logoutIcon {
+        display: none;
     }
     .iconChangeUsername {
-        font-size: initial;
+        display: none;
+    }
+    .iconChangeAvatar {
+        display: none;
     }
 }
