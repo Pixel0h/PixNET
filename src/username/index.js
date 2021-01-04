@@ -8,6 +8,8 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 
+import TextField from '@material-ui/core/TextField'
+
 import Button from '@material-ui/core/Button';
 
 function HandleUsernameChange(props) {
@@ -50,25 +52,26 @@ function HandleUsernameChange(props) {
             </Modal.Header>
             <Modal.Body className="modalBody">
                 <Form>
-                    <Form.Row className="align-items-center">
-                        <Col xs="auto">
+                    <Form.Row>
+                        <Col xs="auto" className="username">
                             <Form.Group controlId="username">
-                                <Form.Label srOnly>New Username</Form.Label>
-                                <Form.Control 
-                                    autoFocus
+                                <TextField
+                                    id="username"
+                                    label="Username"
+                                    variant="outlined"
                                     type="text"
                                     placeholder="Enter new username"
                                     value={state.username}
                                     onChange={handleChange}
                                 />
-                            </Form.Group>
+                            </Form.Group>                       
                         </Col>
                     </Form.Row>
                 </Form>
             </Modal.Body>
             <Modal.Footer className="modalFooter">
-                <Button type="submit" onClick={handleSubmitClick}>Submit</Button>
-                <Button onClick={props.onHide}>Close</Button>
+            <Button className="mr-2" variant="contained" color="primary" type="submit" onClick={handleSubmitClick}>Submit</Button>
+                    <Button variant="outlined" color="primary" onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
     )

@@ -288,7 +288,7 @@ img.photoURL {
     color: var(--text-primary) !important;
 }
 
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 670px) {
     .disclaimer {
         text-align: center;
         font-size: 14px;
@@ -308,6 +308,18 @@ img.photoURL {
     .change-username {
         max-width: 100px;
         height: 45px;
+    }
+    .changeAvatar {
+        max-width: 100px;
+        height: 45px;
+    }
+    .logoutIcon {
+        display: none;
+    }
+    .iconChangeUsername {
+        display: none;
+    }
+    .iconChangeAvatar {
         display: none;
     }
 }

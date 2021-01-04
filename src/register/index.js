@@ -87,7 +87,6 @@ function RegistrationModal(props) {
                         <Form.Row>
                             <Col xs="auto">
                                 <Form.Group controlId="username">
-                                    <Form.Label srOnly>Username</Form.Label>
                                     <TextField 
                                         id="username"
                                         label="Username"
@@ -101,7 +100,6 @@ function RegistrationModal(props) {
                             </Col>
                             <Col xs="auto">
                                 <Form.Group controlId="email">
-                                    <Form.Label srOnly>Email Address</Form.Label>
                                     <TextField 
                                         id="email"
                                         label="Email"
@@ -116,7 +114,6 @@ function RegistrationModal(props) {
                             </Col>
                             <Col xs="auto">
                                 <Form.Group controlId="password">
-                                    <Form.Label srOnly>Password</Form.Label>
                                     <TextField 
                                         id="password"
                                         label="Password"
@@ -130,7 +127,6 @@ function RegistrationModal(props) {
                             </Col>
                             <Col xs="auto">
                                 <Form.Group controlId="confirmPassword">
-                                    <Form.Label srOnly>Confirm Password</Form.Label>
                                     <TextField
                                         id="confirmPassword"
                                         label="Confirm Password"
