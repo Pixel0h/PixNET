@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
-import { BsFillPersonFill } from 'react-icons/bs';
+import { BiRename } from 'react-icons/bi';
 
 import firebase from '../firebase';
 
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
+
+import Button from '@material-ui/core/Button';
 
 function HandleUsernameChange(props) {
     const [state, setState] = useState ({
@@ -78,8 +79,8 @@ export function ChangeUsername() {
 
     return (
         <>
-            <Button className="btn btn-change-username" onClick={() => setModalShow(true)}>
-                <BsFillPersonFill className="iconChangeUsername" /> Change Username
+            <Button variant="contained" color="primary" className="change-username" onClick={() => setModalShow(true)}>
+                <BiRename className="iconChangeUsername" /> Change Username
             </Button>
 
             <HandleUsernameChange 
