@@ -39,6 +39,8 @@ main.chatbox {
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
+    border-bottom: 1px solid var(--bg-secondary);
+    box-shadow: -1px 0px 20px 5px rgba(0, 0, 0, 0.250);
 }
 
 .App {
@@ -72,13 +74,15 @@ main.chatbox {
 }
 
 form.messageForm {
-    height: 5vh;
+    height: 100%;
+    max-height: 5vh;
     width: 100%;
     max-width: 100vw;
     display: flex;
+    font-size: 1.5rem;
     position: fixed;
     bottom: 0;
-    font-size: 1.5rem;
+    margin-bottom: 2.5vh;
 }
 
 form.sign-in-form {
@@ -111,6 +115,7 @@ p.messages {
     border-radius: 5px;
     position: relative;
     display: inline-flex;
+    word-break: break-word;
 }
 
 .message {
@@ -123,6 +128,10 @@ p.messages {
     margin-left: 50px;
     position: relative;
     display: flex;
+}
+
+.usernameForm {
+    margin: 0 auto;
 }
 
 .sent .username {
