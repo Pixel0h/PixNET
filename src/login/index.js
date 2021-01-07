@@ -49,10 +49,10 @@ export class Login extends Component {
                 <Form className="sign-in-form">
                     <Form.Row>
                         <Col xs="auto">
+                            <small className="loginError">{this.state.errMsg}</small>
                             <Form.Group controlId="email">
                                 <Form.Label srOnly>Email Address</Form.Label>
                                 <TextField
-                                    helperText={this.state.errMsg}
                                     error={this.state.err}
                                     id="email"
                                     label="Email"
@@ -69,6 +69,7 @@ export class Login extends Component {
                             <Form.Group controlId="password">
                                 <Form.Label srOnly>Password</Form.Label>
                                 <TextField
+                                    error={this.state.err}
                                     id="password"
                                     label="Password"
                                     variant="outlined" 

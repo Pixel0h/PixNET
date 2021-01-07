@@ -36,7 +36,9 @@ function HandleUsernameChange(props) {
     }
     const handleSubmitClick = (e)  => {
         e.preventDefault();
+        
         props.onHide();
+
         updateUserProfile();
     }
 

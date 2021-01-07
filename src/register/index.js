@@ -83,9 +83,9 @@ function RegistrationModal(props) {
                     <Modal.Title>Register</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="modalBody">
-                    <Form className="sign-in-form">
+                    <Form>
                         <Form.Row>
-                            <Col xs="auto">
+                            <Col xs="{auto}">
                                 <Form.Group controlId="username">
                                     <TextField
                                         //helperText={state.errMsg}
