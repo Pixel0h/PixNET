@@ -55,7 +55,7 @@ function HandleUsernameChange(props) {
             <Modal.Body className="modalBody">
                 <Form>
                     <Form.Row>
-                        <Col xs="auto" className="username">
+                        <Col xs="auto" className="usernameForm">
                             <Form.Group controlId="username">
                                 <TextField
                                     id="username"
@@ -66,10 +66,13 @@ function HandleUsernameChange(props) {
                                     value={state.username}
                                     onChange={handleChange}
                                 />
-                            </Form.Group>                       
+                            </Form.Group>                    
                         </Col>
                     </Form.Row>
                 </Form>
+                <div className="text-center">
+                    <small>Usernames are not unique</small>
+                </div>
             </Modal.Body>
             <Modal.Footer className="modalFooter">
             <Button className="mr-2" variant="contained" color="primary" type="submit" onClick={handleSubmitClick}>Submit</Button>
