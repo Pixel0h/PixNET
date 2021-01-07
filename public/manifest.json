@@ -1,7 +1,6 @@
 {
   "short_name": "PixNET",
   "name": "PixNET App made using React, and Firebase",
-  "start-url": "/?home=true",
   "icons": [
     {
       "src": "icons/manifest-icon-192.png",
