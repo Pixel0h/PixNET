@@ -12,16 +12,16 @@ import Col from 'react-bootstrap/Col';
 
 export class Login extends Component {
     state = {
-        email : "",
-        password : "",
-        err : false,
-        errMsg : ""
+        email: "",
+        password: "",
+        err: false,
+        errMsg: ""
     };
     handleChange = (e) => {
         const { id, value } = e.target
         this.setState(prevState => ({
             ...prevState,
-            [id] : value
+            [id]: value
         }))
     };
     handleSubmit = (e) => {
@@ -29,21 +29,21 @@ export class Login extends Component {
 
         const { email, password } = this.state;
         firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then((user) => {
-            // User is signed in
-        })
-        .catch((error) => {
-            // Error
-            var errorMessage = error.message;
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+            .then((user) => {
+                // User is signed in
+            })
+            .catch((error) => {
+                // Error
+                var errorMessage = error.message;
 
-            this.setState({ err: true, errMsg: errorMessage })
-        });
+                this.setState({ err: true, errMsg: errorMessage })
+            });
     };
     render() {
         const { email, password } = this.state;
-        
+
         return (
             <>
                 <Form className="sign-in-form">
@@ -72,7 +72,7 @@ export class Login extends Component {
                                     error={this.state.err}
                                     id="password"
                                     label="Password"
-                                    variant="outlined" 
+                                    variant="outlined"
                                     type="password"
                                     placeholder="Enter password"
                                     value={password}

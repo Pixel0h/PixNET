@@ -18,15 +18,15 @@ export function ChangeAvatar() {
 
     return (
         <>
-            <Button 
-            variant="contained" 
-            color="primary" 
-            className="changeAvatar" 
-            onClick={() => setModalShow(true)}>
+            <Button
+                variant="contained"
+                color="primary"
+                className="changeAvatar"
+                onClick={() => setModalShow(true)}>
                 <BsPersonBoundingBox className="iconChangeAvatar" /> Change Avatar
             </Button>
 
-            <ChangeAvatarModal 
+            <ChangeAvatarModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />
@@ -44,28 +44,28 @@ function ChangeAvatarModal(props) {
 
     function handleUpload(e) {
         e.preventDefault();
-        
+
         const uploadTask = storage.ref(`/images/${file.name}`).put(file);
         uploadTask.on("state_changed", console.log, console.error, () => {
             storage
-            .ref("images")
-            .child(file.name)
-            .getDownloadURL()
-            .then((url) => {
-                setFile(null)
-                setURL(url);
-                updateUserProfile();
-            });
+                .ref("images")
+                .child(file.name)
+                .getDownloadURL()
+                .then((url) => {
+                    setFile(null)
+                    setURL(url);
+                    updateUserProfile();
+                });
         });
     }
     const updateUserProfile = () => {
         var user = firebase.auth().currentUser;
 
-        user.updateProfile ({
+        user.updateProfile({
             photoURL: url
-        }).then(function() {
+        }).then(function () {
             // Successful update
-        }).catch(function(error) {
+        }).catch(function (error) {
             // An error happened
         })
     }

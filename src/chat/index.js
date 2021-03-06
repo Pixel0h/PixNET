@@ -21,7 +21,7 @@ export function ChatRoom() {
         if (user) {
             const { uid, photoURL, displayName } = user;
 
-            await messagesRef.add ({
+            await messagesRef.add({
                 text: formValue,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                 uid,

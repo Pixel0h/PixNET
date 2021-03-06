@@ -13,30 +13,30 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 
 function HandleUsernameChange(props) {
-    const [state, setState] = useState ({
-        username : ""
+    const [state, setState] = useState({
+        username: ""
     })
     const handleChange = (e) => {
         const { id, value } = e.target
         setState(prevState => ({
             ...prevState,
-            [id] : value
+            [id]: value
         }))
     }
     const updateUserProfile = () => {
         var user = firebase.auth().currentUser;
 
-        user?.updateProfile ({
+        user?.updateProfile({
             displayName: state.username
         }).then(function () {
             // Update Successful
-        }).catch (function(error) {
+        }).catch(function (error) {
             // An error happened
         })
     }
-    const handleSubmitClick = (e)  => {
+    const handleSubmitClick = (e) => {
         e.preventDefault();
-        
+
         props.onHide();
 
         updateUserProfile();
@@ -66,7 +66,7 @@ function HandleUsernameChange(props) {
                                     value={state.username}
                                     onChange={handleChange}
                                 />
-                            </Form.Group>                    
+                            </Form.Group>
                         </Col>
                     </Form.Row>
                 </Form>
@@ -75,8 +75,8 @@ function HandleUsernameChange(props) {
                 </div>
             </Modal.Body>
             <Modal.Footer className="modalFooter">
-            <Button className="mr-2" variant="contained" color="primary" type="submit" onClick={handleSubmitClick}>Submit</Button>
-                    <Button variant="outlined" color="primary" onClick={props.onHide}>Close</Button>
+                <Button className="mr-2" variant="contained" color="primary" type="submit" onClick={handleSubmitClick}>Submit</Button>
+                <Button variant="outlined" color="primary" onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
     )
@@ -91,7 +91,7 @@ export function ChangeUsername() {
                 <BiRename className="iconChangeUsername" /> Change Username
             </Button>
 
-            <HandleUsernameChange 
+            <HandleUsernameChange
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />

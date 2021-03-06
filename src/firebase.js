@@ -24,10 +24,10 @@ const analytics = firebase.analytics();
 const performance = firebase.performance();
 
 export {
-    auth, 
-    firestore, 
-    storage, 
-    analytics, 
-    performance, 
+    auth,
+    firestore,
+    storage,
+    analytics,
+    performance,
     firebase as default
 }
