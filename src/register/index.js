@@ -19,7 +19,7 @@ export function Register() {
         <>
             <Button variant="outlined" color="secondary" className="register" onClick={() => setModalShow(true)}><AiOutlineMail className="registerIcon" /> Register with Email</Button>
 
-            <RegistrationModal 
+            <RegistrationModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />
@@ -28,11 +28,11 @@ export function Register() {
 }
 
 function RegistrationModal(props) {
-    const [state, setState] = useState ({
-        username : "",
-        email : "",
-        password : "",
-        confirmPassword : "",
+    const [state, setState] = useState({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
         //err : false,
         //errMsg : ""
     });
@@ -40,17 +40,17 @@ function RegistrationModal(props) {
         const { id, value } = e.target
         setState(prevState => ({
             ...prevState,
-            [id] : value
+            [id]: value
         }));
     }
     const updateUserProfile = () => {
         var user = firebase.auth().currentUser;
-        
-        user.updateProfile ({
+
+        user.updateProfile({
             displayName: state.username
-        }).then(function() {
+        }).then(function () {
             // Update Successful
-        }).catch(function(error) {
+        }).catch(function (error) {
             // Error happened
         });
     }
@@ -68,85 +68,85 @@ function RegistrationModal(props) {
 
                     //setState({ err: true, errMsg: errorMessage })
                 });
-            } else {
-                alert('Passwords do not match');
-            }
+        } else {
+            alert('Passwords do not match');
         }
-        return (
-            <Modal
-                {...props}
-                size="sm"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
-                <Modal.Header className="modalHeader" closeButton>
-                    <Modal.Title>Register</Modal.Title>
-                </Modal.Header>
-                <Modal.Body className="modalBody">
-                    <Form>
-                        <Form.Row>
-                            <Col xs="{auto}">
-                                <Form.Group controlId="username">
-                                    <TextField
-                                        //helperText={state.errMsg}
-                                        //error={state.err} 
-                                        id="username"
-                                        label="Username"
-                                        variant="outlined"
-                                        type="text"
-                                        placeholder="Enter username"
-                                        value={state.username}
-                                        onChange={handleChange}
-                                    />
-                                </Form.Group>
-                            </Col>
-                            <Col xs="auto">
-                                <Form.Group controlId="email">
-                                    <TextField 
-                                        id="email"
-                                        label="Email"
-                                        variant="outlined"
-                                        type="email"
-                                        aria-describedby="emailHelp"
-                                        placeholder="Enter email"
-                                        value={state.email}
-                                        onChange={handleChange}
-                                    />
-                                </Form.Group>
-                            </Col>
-                            <Col xs="auto">
-                                <Form.Group controlId="password">
-                                    <TextField 
-                                        id="password"
-                                        label="Password"
-                                        variant="outlined"
-                                        type="password"
-                                        placeholder="Enter password"
-                                        value={state.password}
-                                        onChange={handleChange}
-                                    />
-                                </Form.Group>
-                            </Col>
-                            <Col xs="auto">
-                                <Form.Group controlId="confirmPassword">
-                                    <TextField
-                                        id="confirmPassword"
-                                        label="Confirm Password"
-                                        variant="outlined"
-                                        type="password"
-                                        placeholder="Confirm Password"
-                                        value={state.confirmPassword}
-                                        onChange={handleChange}
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Form.Row>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer className="modalFooter">
-                    <Button className="mr-2" variant="contained" color="primary" type="submit" onClick={handleSubmitClick}>Register</Button>
-                    <Button variant="outlined" color="primary" onClick={props.onHide}>Close</Button>
-                </Modal.Footer>
-            </Modal>
-        )
+    }
+    return (
+        <Modal
+            {...props}
+            size="sm"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header className="modalHeader" closeButton>
+                <Modal.Title>Register</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="modalBody">
+                <Form>
+                    <Form.Row>
+                        <Col xs="{auto}">
+                            <Form.Group controlId="username">
+                                <TextField
+                                    //helperText={state.errMsg}
+                                    //error={state.err} 
+                                    id="username"
+                                    label="Username"
+                                    variant="outlined"
+                                    type="text"
+                                    placeholder="Enter username"
+                                    value={state.username}
+                                    onChange={handleChange}
+                                />
+                            </Form.Group>
+                        </Col>
+                        <Col xs="auto">
+                            <Form.Group controlId="email">
+                                <TextField
+                                    id="email"
+                                    label="Email"
+                                    variant="outlined"
+                                    type="email"
+                                    aria-describedby="emailHelp"
+                                    placeholder="Enter email"
+                                    value={state.email}
+                                    onChange={handleChange}
+                                />
+                            </Form.Group>
+                        </Col>
+                        <Col xs="auto">
+                            <Form.Group controlId="password">
+                                <TextField
+                                    id="password"
+                                    label="Password"
+                                    variant="outlined"
+                                    type="password"
+                                    placeholder="Enter password"
+                                    value={state.password}
+                                    onChange={handleChange}
+                                />
+                            </Form.Group>
+                        </Col>
+                        <Col xs="auto">
+                            <Form.Group controlId="confirmPassword">
+                                <TextField
+                                    id="confirmPassword"
+                                    label="Confirm Password"
+                                    variant="outlined"
+                                    type="password"
+                                    placeholder="Confirm Password"
+                                    value={state.confirmPassword}
+                                    onChange={handleChange}
+                                />
+                            </Form.Group>
+                        </Col>
+                    </Form.Row>
+                </Form>
+            </Modal.Body>
+            <Modal.Footer className="modalFooter">
+                <Button className="mr-2" variant="contained" color="primary" type="submit" onClick={handleSubmitClick}>Register</Button>
+                <Button variant="outlined" color="primary" onClick={props.onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+    )
 }
